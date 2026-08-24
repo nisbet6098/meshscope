@@ -37,7 +37,6 @@ When spinning up new VMs, LXCs, or Docker containers, admins often spend 20+ min
                          ├── SQLite Database
                          ├── Internal Router/Proxy
                          └── Local Web UI
-
 📂 Repository Structure
 Plaintext
 ├── agent/            # Go/Rust micro-agent for local daemon scanning
@@ -45,7 +44,6 @@ Plaintext
 ├── ui/               # Web frontend dashboard (React/Svelte + Tailwind)
 ├── docs/             # Architecture, API specifications, and guides
 └── docker-compose.yml# Quick-start local deployment stack
-
 🚦 Getting Started (Development Setup)
 Prerequisites
 Go 1.22+ / Node.js 20+
