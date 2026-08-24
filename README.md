@@ -37,20 +37,30 @@ When spinning up new VMs, LXCs, or Docker containers, admins often spend 20+ min
                          ├── SQLite Database
                          ├── Internal Router/Proxy
                          └── Local Web UI
-📂 Repository Structure
-Plaintext
+
+---
+
+## 📂 Repository Structure
+
 ├── agent/            # Go/Rust micro-agent for local daemon scanning
 ├── server/           # Core API engine, SQLite storage, and router
 ├── ui/               # Web frontend dashboard (React/Svelte + Tailwind)
 ├── docs/             # Architecture, API specifications, and guides
 └── docker-compose.yml# Quick-start local deployment stack
-🚦 Getting Started (Development Setup)
+
+---
+
+##🚦 Getting Started (Development Setup)
+
 Prerequisites
-Go 1.22+ / Node.js 20+
 
-Docker & Docker Compose
+*Go 1.22+ / Node.js 20+
 
-Proxmox VE (optional for full hypervisor testing)
+*Docker & Docker Compose
 
-📄 License
+*Proxmox VE (optional for full hypervisor testing)
+
+---
+
+## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
