@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net"
+	"net/http"
 	"time"
 )
 
@@ -26,16 +28,34 @@ func checkPort(port int) bool {
 	return true
 }
 
+func registerService(payload ServicePayload) {
+	jsonData, err := json.Marshal(payload)
+	if err != nil {
+		return
+	}
+
+	resp, err := http.Post("http://localhost:8080/api/v1/services", "application/json", bytes.NewBuffer(jsonData))
+	if err != nil {
+		fmt.Printf("⚠️ Server unreachable for port %d\n", payload.Port)
+		return
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK || resp.StatusCode == http.StatusCreated {
+		fmt.Printf("✅ Registered active service: %s (Port %d)\n", payload.Name, payload.Port)
+	}
+}
+
 func main() {
-	fmt.Println("🛰️  MeshScope Discovery Agent active...")
+	fmt.Println("🛰️  MeshScope Agent: Dynamic Service Registration active...")
 
 	portsToScan := map[int]string{
 		80:   "HTTP Web Server",
 		443:  "HTTPS Secure Server",
 		22:   "SSH Service",
 		8080: "MeshScope Core API",
-		3000: "Node/React App",
-		5432: "PostgreSQL Database",
+		5173: "Vite React Dashboard",
+		3000: "Node Application",
 	}
 
 	for {
@@ -49,12 +69,9 @@ func main() {
 					Status:   "active",
 					LastSeen: time.Now(),
 				}
-
-				jsonData, _ := json.Marshal(payload)
-				fmt.Printf(" Found active service on port %d! Payload: %s\n", port, string(jsonData))
+				registerService(payload)
 			}
 		}
-
 		time.Sleep(10 * time.Second)
 	}
 }
