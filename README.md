@@ -16,6 +16,15 @@ When spinning up new VMs, LXCs, or Docker containers, admins often spend 20+ min
 ---
 
 ## ✨ Key Features
+
+* 🚀 **Zero-Touch Discovery:** Automatically catalogs active Docker containers, systemd daemons, and LXC services.
+* 🔌 **100% Offline-First:** Stores all metrics, topology, and routing tables locally using an embedded SQLite engine.
+* 🌐 **Built-in Local Routing Engine:** Dynamic mapping for local friendly subdomains (`.local` / `.home`) without complex manual reverse proxy setups.
+* 📊 **Unified Control Panel:** Modern UI for monitoring uptime, IP changes, and launching local applications.
+* ⚡ **Ultra-Lightweight Agents:** Tiny footprint binaries and Proxmox API listeners with near-zero overhead.
+
+---
+
 ## 🛠️ Architecture
 
 ```text
@@ -28,11 +37,12 @@ When spinning up new VMs, LXCs, or Docker containers, admins often spend 20+ min
                          ├── SQLite Database
                          ├── Internal Router/Proxy
                          └── Local Web UI
-
----                         
+```markdown
+---
 
 ## 📂 Repository Structure
 
+```text
 ├── agent/            # Go micro-agent for local daemon scanning
 ├── server/           # Core API engine, SQLite storage, and router
 ├── ui/               # Web frontend dashboard (React/Svelte + Tailwind)
