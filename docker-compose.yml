@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  meshscope:
+    build: .
+    container_name: meshscope
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - PORT=8080
