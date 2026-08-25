@@ -42,11 +42,11 @@ When spinning up new VMs, LXCs, or Docker containers, admins often spend 20+ min
 
 ## 📂 Repository Structure
 
-├── agent/            # Go micro-agent for local daemon scanning
-├── server/           # Core API engine, SQLite storage, and router
-├── ui/               # Web frontend dashboard (React/Svelte + Tailwind)
-├── docs/             # Architecture, API specifications, and guides
-└── docker-compose.yml# Quick-start local deployment stack
+- ├── agent/            # Go micro-agent for local daemon scanning
+- ├── server/           # Core API engine, SQLite storage, and router
+- ├── ui/               # Web frontend dashboard (React/Svelte + Tailwind)
+- ├── docs/             # Architecture, API specifications, and guides
+- └── docker-compose.yml# Quick-start local deployment stack
 
 ---
 
